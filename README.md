@@ -61,7 +61,7 @@ dotnet restore
 
 Пример строки подключения: 
 ```
-"PostgreSQLConnection": "Host=localhost:8888; Username=postgres; Password=12345678;Database=Communiko"
+"PostgreSQLConnection": "Host=localhost:1234; Username=postgres; Password=0123456789;Database=Communiko"
 ```
 
 Конфигурация контекста:
@@ -105,3 +105,21 @@ _!Будьте внимательны: версия EF должна соотве
 - Проверка npx `which npx` если нет - `npm install -g npx` [подробнее](https://dev-gang.ru/article/npm-protiv-npx-v-czem-raznica-hsvo0oxvqs/)
 - Создание клиентского приложения `npx create-react-app client --use-npm --template typescript` ([подробнее](https://create-react-app.dev/docs/adding-typescript/))
 - Многие верстальщики рекомендуют использовать плагин [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+
+Обновить файл _Communiko/PresentationAPI/appsettings.json_ 
+добавив строку подключения к бд
+
+```
+{
+  "ConnectionStrings": {
+    "PostgreSQLConnection": "Host=$HOST:PORT$; Username=$Username$; Password=$Password$;Database=$db_name$"
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "AllowedHosts": "*"
+}
+```
