@@ -9,9 +9,9 @@ export interface Activeness {
 }
 
 interface Props {
-  activeness: Activeness;
+  activenessItem: Activeness;
 }
-export function activenessItem({ activeness: activenessItem }: Props) {
+export function ActivenessItem({ activenessItem }: Props) {
   return (
     <ul>
       <li>{activenessItem.id}</li>
