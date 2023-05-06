@@ -10,6 +10,7 @@ namespace PresentationAPI.Controllers
 	[Route("api/[controller]")]
 	public class TestController : ControllerBase
 	{
+		[HttpGet]
 		public string[] Get()
 		{
 			return new string[] { "Hello", "world!" };
