@@ -1,11 +1,11 @@
 ﻿using BusinessDomain.Model;
 using Microsoft.EntityFrameworkCore;
 
-namespace Persistance
+namespace Persistence
 {
-	public class DataContex : DbContext
+	public class DataContext : DbContext
 	{
-		public DataContex(DbContextOptions options) : base(options)
+		public DataContext(DbContextOptions options) : base(options)
 		{
 		}
 		public DbSet<Activeness> Activities { get; set; }

@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-using Persistance;
+using Persistence;
 
 #nullable disable
 
 namespace Persistence.Migrations
 {
-    [DbContext(typeof(DataContex))]
+    [DbContext(typeof(DataContext))]
     partial class DataContexModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

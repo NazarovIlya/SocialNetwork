@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using Persistance;
+using Persistence;
 using Persistence.ExperimentalData;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,7 +9,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<DataContex>(op =>
+builder.Services.AddDbContext<DataContext>(op =>
 {
 	op.UseNpgsql(builder.Configuration.GetConnectionString("PostgreSQLConnection"));
 });
@@ -27,7 +27,7 @@ using (var serviceScope = app.Services.CreateScope())
 	var serviceProvider = serviceScope.ServiceProvider;
 	try
 	{
-		var context = serviceProvider.GetRequiredService<DataContex>();
+		var context = serviceProvider.GetRequiredService<DataContext>();
 		await context.Database.MigrateAsync();
 		await TestDataProvider.Provide(context, 100);
 	}
