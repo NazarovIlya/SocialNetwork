@@ -1,4 +1,4 @@
-﻿using BusinessDomain;
+﻿using BusinessDomain.Model;
 using Microsoft.EntityFrameworkCore;
 
 namespace Persistance
