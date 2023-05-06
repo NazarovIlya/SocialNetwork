@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using Persistance;
+using Microsoft.Extensions.Options;
+using Persistence;
 using Persistence.ExperimentalData;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,10 +10,21 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<DataContex>(op =>
+builder.Services.AddDbContext<DataContext>(op =>
 {
 	op.UseNpgsql(builder.Configuration.GetConnectionString("PostgreSQLConnection"));
 });
+
+builder.Services.AddCors(options =>
+{
+	options.AddPolicy("CorsAccessControlAllowOriginPolicy", policy =>
+	{
+		policy.AllowAnyMethod()
+		.AllowAnyHeader()
+		.WithOrigins(builder.Configuration["Client-host"]);
+	});
+});
+
 
 var app = builder.Build();
 
@@ -22,12 +34,14 @@ if (app.Environment.IsDevelopment())
 	app.UseSwaggerUI();
 }
 
+app.UseCors("CorsAccessControlAllowOriginPolicy");
+
 using (var serviceScope = app.Services.CreateScope())
 {
 	var serviceProvider = serviceScope.ServiceProvider;
 	try
 	{
-		var context = serviceProvider.GetRequiredService<DataContex>();
+		var context = serviceProvider.GetRequiredService<DataContext>();
 		await context.Database.MigrateAsync();
 		await TestDataProvider.Provide(context, 100);
 	}

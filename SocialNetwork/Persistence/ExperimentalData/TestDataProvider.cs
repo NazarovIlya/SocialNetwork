@@ -1,11 +1,11 @@
 ﻿using BusinessDomain.Model;
-using Persistance;
+using Persistence;
 
 namespace Persistence.ExperimentalData
 {
 	public class TestDataProvider
 	{
-		public static async Task Provide(DataContex context, int count = 30)
+		public static async Task Provide(DataContext context, int count = 30)
 		{
 			if (context.Activities.Any()) return;
 
