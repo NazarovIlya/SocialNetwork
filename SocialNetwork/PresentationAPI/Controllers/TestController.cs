@@ -7,10 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 namespace PresentationAPI.Controllers
 {
 	[ApiController]
-	[Route("api/[contoller]")]
+	[Route("api/[controller]")]
 	public class TestController : ControllerBase
 	{
-		[HttpGet]
 		public string[] Get()
 		{
 			return new string[] { "Hello", "world!" };
