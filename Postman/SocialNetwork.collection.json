@@ -109,7 +109,9 @@
 									"",
 									"pm.environment.set(",
 									"    'activenessDate', ",
-									"    moment().format('YYYY-MM-DD')",
+									"    moment().add(10, 'days')",
+									"            .add(3, 'hour')",
+									"            .toISOString()",
 									"            );"
 								],
 								"type": "text/javascript"
@@ -127,15 +129,15 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"id\": \"{{$guid}}\",\n\t\"title\": \"Тестовая активность #333\",\n    \"category\": \"Категория #333\",\n    \"description\": \"Описание #000\",\n    \"city\": \"Город #000\",\n    \"pointTime\": \"{{activenessDate}}\",\n    \"location\": \"Место проведения #000\"\n}"
+							"raw": "{\n    // \"id\": \"{{$guid}}\",\n\t\"title\": \"Тестовая активность #000\",\n    \"category\": \"Категория #000\",\n    \"description\": \"Описание #000\",\n    \"city\": \"Город #000\",\n    \"pointTime\": \"{{activenessDate}}\",\n    \"location\": \"Место проведения #000\"\n}"
 						},
 						"url": {
-							"raw": "http://localhost:11333/api/Activeness/",
+							"raw": "http://localhost:11222/api/Activeness/",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "11333",
+							"port": "11222",
 							"path": [
 								"api",
 								"Activeness",

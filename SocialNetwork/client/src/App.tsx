@@ -15,7 +15,7 @@ function App() {
   return (
     <div>
       <Header as="h1">
-        <img src="images/logo.png" />
+        <img src="images/logo.png" alt="logo" />
         <label>Social Network project</label>
       </Header>
       {activeness.map((e: Activeness) => (
