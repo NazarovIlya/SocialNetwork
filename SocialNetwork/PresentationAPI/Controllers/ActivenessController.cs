@@ -24,7 +24,7 @@ namespace PresentationAPI.Controllers
 		[HttpPost]
 		public async Task<IActionResult> Create(Activeness activeness)
 		{
-			Debug.WriteLine(activeness.ToString());
+			Debug.WriteLine(activeness);
 
 			return Ok(await Mediator.Send(new CreateActivities.Command()
 			{
