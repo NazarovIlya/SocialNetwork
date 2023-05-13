@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
-import "./App.css";
+import "./style.css";
 import axios from "axios";
-import { Activeness, ActivenessItem } from "./ActivenessItem";
+import { ActivenessItem } from "../components/activeness/ActivenessItem";
+import { Activeness } from "../model/Activeness";
 import { Button, Header } from "semantic-ui-react";
 
 function App() {
-  const [activeness, setActiveness] = useState([]);
+  const [activeness, setActiveness] = useState<Activeness[]>([]);
   useEffect(() => {
-    axios.get("http://localhost:11333/api/Activeness").then((Response) => {
-      setActiveness(Response.data);
-    });
+    axios
+      .get<Activeness[]>("http://localhost:11333/api/Activeness")
+      .then((Response) => {
+        setActiveness(Response.data);
+      });
   }, []);
 
   return (
@@ -18,7 +21,7 @@ function App() {
         <img src="images/logo.png" alt="logo" />
         <label>Social Network project</label>
       </Header>
-      {activeness.map((e: Activeness) => (
+      {activeness.map((e) => (
         <div key={e.id}>
           <ActivenessItem activenessItem={e} />
         </div>
