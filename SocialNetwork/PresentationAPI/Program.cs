@@ -1,7 +1,9 @@
+// Ignore Spelling: app
+
 using Application.Activities;
+using Application.AppConfig;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using Persistence;
 using Persistence.ExperimentalData;
 
@@ -12,6 +14,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddMediatR(typeof(ItemsActivities.Handler));
+builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
 
 builder.Services.AddDbContext<DataContext>(op =>
 {
@@ -51,7 +54,7 @@ using (var serviceScope = app.Services.CreateScope())
 	catch (Exception e)
 	{
 		var logger = serviceProvider.GetRequiredService<ILogger<Program>>();
-		logger.LogError(e, "Непредвиденная ошибка миграции");
+		logger.LogError(e, """Непредвиденная ошибка миграции""");
 	}
 }
 
